@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Events</title>
+</head>
+
+<body>
+    <nav>
+        <button class="tilbage" onclick="back()">Tilbage</button>
+        <img src="Huset_logo_9_B.png" alt="huset_logo">
+    </nav>
+
+    <h1>Events</h1>
+
+    <main>
+        <section class="container-data">
+            <div class="container" data-container>
+            </div>
+        </section>
+
+        <template data-template>
+            <div class="postlistviewparent">
+                <article class="postListview">
+                    <div class="box">
+                        <h2 data-title></h2>
+
+                        <img data-billede>
+                    </div>
+                    <div class="box">
+                        <div data-text></div>
+                        <b>Eventtype</b><br>
+                        <div data-event></div>
+                        <br><b>Tid</b><br>
+                        <div data-tid></div>
+                        <br><b>Dato</b><br>
+                        <div data-dato></div>
+                        <br><b>Sted</b>
+                        <div data-sted></div>
+                    </div>
+                </article>
+            </div>
+        </template>
+    </main>
+
+    <script>
+        function back() {
+            window.history.go(-1);
+        }
+
+
+    document.addEventListener("DOMContentLoaded", getJSON);
+        let posts;
+        let postTemplate = document.querySelector("[data-template]");
+        let postContainer = document.querySelector("[data-container]");
+        async function getJSON() {
+            let jsonData = await fetch("http://sarahjane.dk/kea/2.semester/huset/wordpress/wp-json/wp/v2/multiple-post-type?&type[]=musikevents&type[]=filmevents&type[]=ord&type[]=scenekunstner&type[]=andet");
+            posts = await jsonData.json();
+            visPosts();
+        }
+
+        function visPosts() {
+            console.log(posts);
+            posts.forEach(post => {
+                let klon = postTemplate.cloneNode(true).content;
+                klon.querySelector("[data-title]").textContent = post.title.rendered;
+                klon.querySelector("[data-dato]").innerHTML = post.acf.dato;
+                klon.querySelector("[data-tid]").innerHTML = post.acf.tid;
+                klon.querySelector("[data-text]").innerHTML = post.content.rendered;
+                klon.querySelector("[data-sted]").innerHTML = post.acf.sted;
+                klon.querySelector("[data-event]").innerHTML = post.acf.event;
+                klon.querySelector("[data-billede]").src = post.acf.billede.url;
+                postContainer.appendChild(klon);
+            })
+        }
+    </script>
+</body>
+</html>
