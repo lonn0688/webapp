@@ -21,7 +21,13 @@ button {
     padding: 1em;
     margin-bottom: 1em;
     border-radius: 1em;
-    color: rgb(223, 242, 253)
+    color: rgb(223, 242, 253);
+    letter-spacing: .1em;
+    font-size: 1em;
+}
+
+.menu-item {
+    background-color: none;
 }
 
 footer {

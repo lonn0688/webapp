@@ -15,6 +15,13 @@
 
     <h1>Events</h1>
 
+            <button class="menu-item" data-type="type">Alle</button>
+        <button class="menu-item" data-type="musikevents">musikevents</button>
+        <button class="menu-item" data-type="filmevents">filmevents</button>
+        <button class="menu-item" data-type="ord">ord</button>
+        <button class="menu-item" data-type="scenekunstner">scenekunstner</button>
+        <button class="menu-item" data-type="andet">andet</button>
+
     <main>
         <section class="container-data">
             <div class="container" data-container>
@@ -46,35 +53,74 @@
     </main>
 
     <script>
-        function back() {
+    let dest = document.querySelector("[data-container]"),
+        posts, kategorifilter = "Menu";
+    document.addEventListener("DOMContentLoaded", hentJson);
+    async function hentJson() {
+       let jsonData = await fetch("http://sarahjane.dk/kea/2.semester/huset/wordpress/wp-json/wp/v2/multiple-post-type?&type[]=musikevents&type[]=filmevents&type[]=ord&type[]=scenekunstner&type[]=andet");
+            posts = await jsonData.json();
+            visPosts();
+    }
+
+    document.querySelectorAll(".menu-item").forEach(knap => {
+        knap.addEventListener("click", filtrering)
+    });
+
+    function filtrering() {
+        dest.textContent = "";
+        kategorifilter = this.getAttribute("data-type");
+        visPosts()
+    }
+
+    function visPosts() {
+        let dest = document.querySelector("[data-container]"),
+
+            temp = document.querySelector("[data-template]");
+
+                let postContainer = document.querySelector("[data-container]");
+     /*
+        document.querySelector("header h2").textContent = kategorifilter;*/
+        posts.forEach(post => {
+            if (post.type == kategorifilter || kategorifilter == "Menu") {
+                let klon = temp.cloneNode(true).content;
+                 klon.querySelector("[data-title]").textContent = post.title.rendered
+                klon.querySelector("[data-title]").addEventListener("click", () => {
+                    window.location.href="singleview.html?id" + post.acf.id;});
+                klon.querySelector("[data-dato]").innerHTML = post.acf.dato
+                klon.querySelector("[data-dato]").addEventListener("click", () => {
+                    window.location.href="singleview.html?id" + post.acf.id;
+                });
+                klon.querySelector("[data-tid]").innerHTML = post.acf.tid
+                klon.querySelector("[data-tid]").addEventListener("click", () => {
+                    window.location.href="singleview.html?id" + post.acf.id;
+                });
+                klon.querySelector("[data-text]").innerHTML = post.content.rendered
+                klon.querySelector("[data-text]").addEventListener("click", () => {
+                    window.location.href="singleview.html?id" + post.acf.id;
+                });
+                klon.querySelector("[data-sted]").innerHTML = post.acf.sted
+                klon.querySelector("[data-sted]").addEventListener("click", () => {
+                    window.location.href="singleview.html?id" + post.acf.id;
+                });
+                klon.querySelector("[data-event]").innerHTML = post.acf.event
+                klon.querySelector("[data-event]").addEventListener("click", () => {
+                    window.location.href="singleview.html?id" + post.acf.id;
+                });
+                klon.querySelector("[data-billede]").src = post.acf.billede.url
+                klon.querySelector("[data-billede]").addEventListener("click", () => {
+                    window.location.href="singleview.html?id" + post.acf.id;
+                })
+                postContainer.appendChild(klon);
+            }
+        })
+    }
+
+
+
+          function back() {
             window.history.go(-1);
         }
 
-
-    document.addEventListener("DOMContentLoaded", getJSON);
-        let posts;
-        let postTemplate = document.querySelector("[data-template]");
-        let postContainer = document.querySelector("[data-container]");
-        async function getJSON() {
-            let jsonData = await fetch("http://sarahjane.dk/kea/2.semester/huset/wordpress/wp-json/wp/v2/multiple-post-type?&type[]=musikevents&type[]=filmevents&type[]=ord&type[]=scenekunstner&type[]=andet");
-            posts = await jsonData.json();
-            visPosts();
-        }
-
-        function visPosts() {
-            console.log(posts);
-            posts.forEach(post => {
-                let klon = postTemplate.cloneNode(true).content;
-                klon.querySelector("[data-title]").textContent = post.title.rendered;
-                klon.querySelector("[data-dato]").innerHTML = post.acf.dato;
-                klon.querySelector("[data-tid]").innerHTML = post.acf.tid;
-                klon.querySelector("[data-text]").innerHTML = post.content.rendered;
-                klon.querySelector("[data-sted]").innerHTML = post.acf.sted;
-                klon.querySelector("[data-event]").innerHTML = post.acf.event;
-                klon.querySelector("[data-billede]").src = post.acf.billede.url;
-                postContainer.appendChild(klon);
-            })
-        }
     </script>
 </body>
 </html>
