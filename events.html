@@ -57,9 +57,12 @@
     </main>
 
     <script>
-    let dest = document.querySelector("[data-container]"),
-        posts, kategorifilter = "type";
+       let dest = document.querySelector("[data-container]");
+       let posts = [];
+       let kategorifilter = "type";
+
     document.addEventListener("DOMContentLoaded", hentJson);
+
     async function hentJson() {
        let jsonData = await fetch("http://sarahjane.dk/kea/2.semester/huset/wordpress/wp-json/wp/v2/multiple-post-type?&type[]=musikevents&type[]=filmevents&type[]=ord&type[]=scenekunst&type[]=andet");
             posts = await jsonData.json();
@@ -77,6 +80,7 @@
     }
 
     function visPosts() {
+        console.log(posts);
         let dest = document.querySelector("[data-container]"),
 
             temp = document.querySelector("[data-template]");
@@ -85,35 +89,37 @@
      /*
         document.querySelector("header h2").textContent = kategorifilter;*/
         posts.forEach(post => {
+
+        console.log(post.id);
             if (post.type == kategorifilter || kategorifilter == "type") {
                 let klon = temp.cloneNode(true).content;
                  klon.querySelector("[data-title]").textContent = post.title.rendered
                 klon.querySelector("[data-title]").addEventListener("click", () => {
-                    window.location.href="singleview.html?id" + post.acf.id;});
+                    window.location.href="singleview.html?id=" + post.id;});
                 klon.querySelector("[data-dato]").innerHTML = post.acf.dato
                 klon.querySelector("[data-dato]").addEventListener("click", () => {
-                    window.location.href="singleview.html?id" + post.acf.id;
+                    window.location.href="singleview.html?id=" + post.id;
                 });
                 klon.querySelector("[data-tid]").innerHTML = post.acf.tid
                 klon.querySelector("[data-tid]").addEventListener("click", () => {
-                    window.location.href="singleview.html?id" + post.acf.id;
-                });
+                     window.location.href="singleview.html?id=" + post.id;});
+
                 klon.querySelector("[data-text]").innerHTML = post.content.rendered
                 klon.querySelector("[data-text]").addEventListener("click", () => {
-                    window.location.href="singleview.html?id" + post.acf.id;
-                });
+                     window.location.href="singleview.html?id=" + post.id;});
+
                 klon.querySelector("[data-sted]").innerHTML = post.acf.sted
                 klon.querySelector("[data-sted]").addEventListener("click", () => {
-                    window.location.href="singleview.html?id" + post.acf.id;
-                });
+                     window.location.href="singleview.html?id=" + post.id;});
+
                 klon.querySelector("[data-event]").innerHTML = post.acf.event
                 klon.querySelector("[data-event]").addEventListener("click", () => {
-                    window.location.href="singleview.html?id" + post.acf.id;
-                });
+                     window.location.href="singleview.html?id=" + post.id;});
+
                 klon.querySelector("[data-billede]").src = post.acf.billede.url
                 klon.querySelector("[data-billede]").addEventListener("click", () => {
-                    window.location.href="singleview.html?id" + post.acf.id;
-                })
+                     window.location.href="singleview.html?id=" + post.id;});
+
                 postContainer.appendChild(klon);
             }
         })

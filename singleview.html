@@ -25,7 +25,7 @@
             </div>
         </section>
 
-        <template data-template>
+
             <div class="postlistviewparent">
                 <article class="postListview" onclick="single">
                     <div class="box">
@@ -46,7 +46,6 @@
                     </div>
                 </article>
             </div>
-        </template>
     </main>
 
     <script>
@@ -55,12 +54,12 @@
         let id = urlParams.get("id");
         console.log("id");
 
-        let dest = document.querySelector("[data-container]"),
-            posts, kategorifilter = "Menu";
+        let dest = document.querySelector(".postlistviewparent"),
+            posts, kategorifilter = "type";
         document.addEventListener("DOMContentLoaded", hentJson);
 
         async function hentJson(){
-                      let jsonData = await fetch("http://sarahjane.dk/kea/2.semester/huset/wordpress/wp-json/wp/v2/multiple-post-type?&type[]=musikevents&type[]=filmevents&type[]=ord&type[]=scenekunstner&type[]=andet");
+                      let jsonData = await fetch("http://sarahjane.dk/kea/2.semester/huset/wordpress/wp-json/wp/v2/multiple-post-type?&type[]=musikevents&type[]=filmevents&type[]=ord&type[]=scenekunst&type[]=andet");
             posts = await jsonData.json();
             visPosts();
         }
@@ -77,12 +76,12 @@
 
 function visPosts() {
     posts.forEach(post => {
-            if (post.acf.id == id) {
+            if (post.id == id) {
                 console.log(dest.querySelector("[data-title]"));
                 dest.querySelector("[data-title]").textContent = post.title.rendered;
                 dest.querySelector("[data-dato]").innerHTML = post.acf.dato;
                 dest.querySelector("[data-tid]").innerHTML = post.acf.tid;
-                dest.querySelector("[data-text]").innerHTML = post.acf.rendered;
+                dest.querySelector("[data-text]").innerHTML = post.content.rendered;
                 dest.querySelector("[data-sted]").innerHTML = post.acf.sted;
                 dest.querySelector("[data-event]").innerHTML = post.acf.event;
                 dest.querySelector("[data-billede]").src = post.acf.billede.url;
