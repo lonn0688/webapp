@@ -12,7 +12,7 @@
 
 <body>
     <nav>
-        <img src="Huset_logo_9_B.png" alt="huset_logo">
+        <a href="index.html"><img src="huset11.png" alt="huset_logo" class="logo_huset"></a>
     </nav>
 
     <h1>Events</h1>
@@ -42,13 +42,13 @@
                     </div>
                     <div class="box">
                         <div data-text></div>
-                        <b>Eventtype</b><br>
+
                         <div data-event></div>
-                        <br><b>Tid</b><br>
+
                         <div data-tid></div>
                         <br><b>Dato</b><br>
                         <div data-dato></div>
-                        <br><b>Sted</b>
+
                         <div data-sted></div>
                     </div>
                 </article>
@@ -99,7 +99,7 @@
                 klon.querySelector("[data-dato]").innerHTML = post.acf.dato
                 klon.querySelector("[data-dato]").addEventListener("click", () => {
                     window.location.href="singleview.html?id=" + post.id;
-                });
+                });/*
                 klon.querySelector("[data-tid]").innerHTML = post.acf.tid
                 klon.querySelector("[data-tid]").addEventListener("click", () => {
                      window.location.href="singleview.html?id=" + post.id;});
@@ -114,7 +114,7 @@
 
                 klon.querySelector("[data-event]").innerHTML = post.acf.event
                 klon.querySelector("[data-event]").addEventListener("click", () => {
-                     window.location.href="singleview.html?id=" + post.id;});
+                     window.location.href="singleview.html?id=" + post.id;});*/
 
                 klon.querySelector("[data-billede]").src = post.acf.billede.url
                 klon.querySelector("[data-billede]").addEventListener("click", () => {

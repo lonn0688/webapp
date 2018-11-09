@@ -5,8 +5,14 @@ body {
     margin: 1em;
 }
 
+
 img {
     width: 100%;
+}
+
+.logo_huset {
+    width: 50%;
+    float: left;
 }
 
 .menu-item {
@@ -15,6 +21,7 @@ img {
     padding: .5em;
     border: 2px solid rgb(36, 25, 93);
     margin: .2em;
+    margin-top: 1.5em;
 }
 
 footer {
@@ -54,7 +61,6 @@ a {
 /* FORSIDE */
 
 .events {
-    /* background-color: rgb(36, 25, 93); */
     background-color: black;
     padding: 1em;
     margin-top: 3.5em;
@@ -63,7 +69,6 @@ a {
 }
 
 .kontakt {
-    /* background-color: rgb(36, 25, 93); */
     background-color: black;
     padding: 1em;
     margin-top: 2em;
@@ -74,17 +79,26 @@ a {
 /* EVENTS */
 
 article {
-    background-color: white;
+    background-color: rgb(36, 25, 93);
     padding: 1em;
-    border: 3px solid rgb(36, 25, 93);
     border-radius: 1em;
     margin-bottom: 3em;
 }
 
 article h2 {
-    color: black;
-    font-size: 1.5em;
+    color: white;
+    font-size: 1em;
     line-height: 1.5em;
+}
+
+.box {
+    font-family: 'Montserrat', sans-serif;
+    color: white;
+    line-height: 1.5em;
+}
+
+article img {
+    border-radius: 1em;
 }
 
 .filter {
