@@ -9,23 +9,6 @@ img {
     width: 100%;
 }
 
-nav img {
-    width: 25%;
-    float: right;
-}
-
-button {
-    background-color: rgb(36, 25, 93);
-    border: none;
-    outline: none;
-    padding: 1em;
-    margin-bottom: 1em;
-    border-radius: 1em;
-    color: rgb(223, 242, 253);
-    letter-spacing: .1em;
-    font-size: 1em;
-}
-
 .menu-item {
     background-color: rgb(223, 242, 253);
     color: rgb(36, 25, 93);
@@ -41,36 +24,38 @@ footer {
 
 h1 {
     text-align: center;
-    font-family: comic sans, sans-serif;
+    font-family: 'Montserrat', sans-serif;
+    color: rgb(223, 242, 253);
 }
 
 h2 {
     text-align: center;
     color: rgb(223, 242, 253);
     font-size: 2.5em;
-    font-family: comic sans, sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 h3 {
     margin-top: 2.5em;
-    font-family: comic sans, sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 p {
     line-height: 1.5em;
-    font-family: comic sans, sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 a {
     text-decoration: none;
     color: black;
-    font-family: comic sans, sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
 
 /* FORSIDE */
 
 .events {
-    background-color: rgb(36, 25, 93);
+    /* background-color: rgb(36, 25, 93); */
+    background-color: black;
     padding: 1em;
     margin-top: 3.5em;
     margin-bottom: 2em;
@@ -78,7 +63,8 @@ a {
 }
 
 .kontakt {
-    background-color: rgb(36, 25, 93);
+    /* background-color: rgb(36, 25, 93); */
+    background-color: black;
     padding: 1em;
     margin-top: 2em;
     margin-bottom: 3.5em;
