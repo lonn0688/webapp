@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
+       <link rel="icon" href="Icon-16.png" type="image" sizes="16x16">
+        <link rel="apple-touch-icon" sizes="180x180" href="Icon-180.png" >
     <title>Events</title>
 </head>
 
@@ -20,7 +22,7 @@
         <button class="menu-item" data-type="musikevents">musikevents</button>
         <button class="menu-item" data-type="filmevents">filmevents</button>
         <button class="menu-item" data-type="ord">ord</button>
-        <button class="menu-item" data-type="scenekunstner">scenekunstner</button>
+        <button class="menu-item" data-type="scenekunst">scenekunst</button>
         <button class="menu-item" data-type="andet">andet</button>
     </div>
 
@@ -56,10 +58,10 @@
 
     <script>
     let dest = document.querySelector("[data-container]"),
-        posts, kategorifilter = "Menu";
+        posts, kategorifilter = "type";
     document.addEventListener("DOMContentLoaded", hentJson);
     async function hentJson() {
-       let jsonData = await fetch("http://sarahjane.dk/kea/2.semester/huset/wordpress/wp-json/wp/v2/multiple-post-type?&type[]=musikevents&type[]=filmevents&type[]=ord&type[]=scenekunstner&type[]=andet");
+       let jsonData = await fetch("http://sarahjane.dk/kea/2.semester/huset/wordpress/wp-json/wp/v2/multiple-post-type?&type[]=musikevents&type[]=filmevents&type[]=ord&type[]=scenekunst&type[]=andet");
             posts = await jsonData.json();
             visPosts();
     }
@@ -83,7 +85,7 @@
      /*
         document.querySelector("header h2").textContent = kategorifilter;*/
         posts.forEach(post => {
-            if (post.type == kategorifilter || kategorifilter == "Menu") {
+            if (post.type == kategorifilter || kategorifilter == "type") {
                 let klon = temp.cloneNode(true).content;
                  klon.querySelector("[data-title]").textContent = post.title.rendered
                 klon.querySelector("[data-title]").addEventListener("click", () => {

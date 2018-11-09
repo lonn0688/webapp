@@ -4,6 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
+       <link rel="icon" href="Icon-16.png" type="image" sizes="16x16">
+        <link rel="apple-touch-icon" sizes="180x180" href="Icon-180.png" >
     <title>Event</title>
 </head>
 
@@ -51,27 +53,30 @@
 
         let urlParams = new URLSearchParams(window.location.search);
         let id = urlParams.get("id");
+        console.log("id");
 
-        function back() {
-            window.history.go(-1);
-        }
+        let dest = document.querySelector("[data-container]"),
+            posts, kategorifilter = "Menu";
+        document.addEventListener("DOMContentLoaded", hentJson);
 
-
-
-    document.addEventListener("DOMContentLoaded", getJSON);
-        let posts;
-        let postTemplate = document.querySelector("[data-template]");
-        let postContainer = document.querySelector("[data-container]");
-        let dest = document.querySelector("[data-container]")
-
-        async function getJSON() {
-            let jsonData = await fetch("http://sarahjane.dk/kea/2.semester/huset/wordpress/wp-json/wp/v2/multiple-post-type?&type[]=musikevents&type[]=filmevents&type[]=ord&type[]=scenekunstner&type[]=andet");
+        async function hentJson(){
+                      let jsonData = await fetch("http://sarahjane.dk/kea/2.semester/huset/wordpress/wp-json/wp/v2/multiple-post-type?&type[]=musikevents&type[]=filmevents&type[]=ord&type[]=scenekunstner&type[]=andet");
             posts = await jsonData.json();
             visPosts();
         }
 
-        function visPosts() {
-        posts.forEach(post => {
+       document.querySelectorAll(".menu-item").forEach(knap => {
+           knap.addEventListener("click", filtrering)
+       });
+
+    function filtrering() {
+        dest.textContent = "";
+        kategorifilter = this.getAttribute("data-type");
+        visPosts()
+    }
+
+function visPosts() {
+    posts.forEach(post => {
             if (post.acf.id == id) {
                 console.log(dest.querySelector("[data-title]"));
                 dest.querySelector("[data-title]").textContent = post.title.rendered;
@@ -83,6 +88,11 @@
                 dest.querySelector("[data-billede]").src = post.acf.billede.url;
             }
         })
+}
+
+
+         function back() {
+            window.history.go(-1);
         }
 
     </script>
