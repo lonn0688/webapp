@@ -2,7 +2,7 @@
 
 body {
     background-color: rgb(223, 242, 253);
-    margin: 1em;
+    margin: 0;
 }
 
 
@@ -11,18 +11,11 @@ img {
 }
 
 .logo_huset {
-    width: 50%;
-    float: left;
+    width: 25%;
+    margin-left: 1em;
+    margin-top: 1em;
 }
 
-.menu-item {
-    background-color: rgb(223, 242, 253);
-    color: rgb(36, 25, 93);
-    padding: .5em;
-    border: 2px solid rgb(36, 25, 93);
-    margin: .2em;
-    margin-top: 1.5em;
-}
 
 footer {
     margin-bottom: 0;
@@ -33,6 +26,13 @@ h1 {
     text-align: center;
     font-family: 'Montserrat', sans-serif;
     color: rgb(223, 242, 253);
+}
+
+.overskrift h1 {
+    text-align: center;
+    font-family: 'Montserrat', sans-serif;
+    color: black;
+    font-size: 4em;
 }
 
 h2 {
@@ -63,25 +63,24 @@ a {
 .events {
     background-color: black;
     padding: 1em;
-    margin-top: 3.5em;
-    margin-bottom: 2em;
+    margin: 3.5em 1em 1em 1em;
     border-radius: 1em;
 }
 
 .kontakt {
     background-color: black;
     padding: 1em;
-    margin-top: 2em;
-    margin-bottom: 3.5em;
+    margin: 3.5em 1em;
     border-radius: 1em;
 }
 
 /* EVENTS */
 
 article {
-    background-color: rgb(36, 25, 93);
+    background-color: black;
     padding: 1em;
     border-radius: 1em;
+    margin: 1em;
     margin-bottom: 3em;
 }
 
@@ -103,8 +102,23 @@ article img {
 
 .filter {
     margin-top: 2em;
-    margin-bottom: 2em;
+    margin-bottom: 3em;
     text-align: center;
+    background-color: rgb(36, 25, 93);
+}
+
+.menu-item {
+    color: rgb(223, 242, 253);
+    font-size: 1em;
+    border: none;
+    background-color: rgb(36, 25, 93);
+    padding: 1em .5em;
+}
+
+.menu-item:focus {
+    color: rgb(36, 25, 93);
+    background-color: rgb(223, 242, 253);
+    border: 2px solid rgb(36, 25, 93);
 }
 
 
