@@ -64,15 +64,15 @@ a {
 .events {
     background-color: black;
     padding: 1em;
-    margin: 3.5em 1em 1em 1em;
-    border-radius: 1em;
+    margin: 3.5em 2em 1em 2em;
+    border-radius: 50%;
 }
 
 .kontakt {
     background-color: black;
     padding: 1em;
-    margin: 3.5em 1em;
-    border-radius: 1em;
+    margin: 3.5em 2em;
+    border-radius: 50%;
 }
 
 /* EVENTS */
