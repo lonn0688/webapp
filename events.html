@@ -64,7 +64,7 @@
     document.addEventListener("DOMContentLoaded", hentJson);
 
     async function hentJson() {
-       let jsonData = await fetch("http://sarahjane.dk/kea/2.semester/huset/wordpress/wp-json/wp/v2/multiple-post-type?&type[]=musikevents&type[]=filmevents&type[]=ord&type[]=scenekunst&type[]=andet");
+       let jsonData = await fetch("http://sarahjane.dk/kea/2.semester/huset/wordpress/wp-json/wp/v2/multiple-post-type?&type[]=musikevents&type[]=filmevents&type[]=ord&type[]=scenekunst&type[]=andet&per_page=50");
             posts = await jsonData.json();
             visPosts();
     }
