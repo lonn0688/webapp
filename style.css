@@ -3,7 +3,7 @@
 body {
     background-color: rgb(223, 242, 253);
     margin: 0;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato', verdana;
 }
 
 
@@ -21,18 +21,18 @@ img {
 footer {
     margin-bottom: 0;
     text-align: center;
-    font-family: 'Lato' sans-serif;
+    font-family: 'Lato', verdana;
 }
 
 h1 {
     text-align: center;
-    font-family: 'Lato' sans-serif;
-    color: rgb(223, 242, 253);
+    font-family: 'Lato', verdana;
+    color: black;
 }
 
 .overskrift h1 {
     text-align: center;
-    font-family: 'Lato' sans-serif;
+    font-family: 'Lato', verdana;
     color: black;
     font-size: 4em;
     margin-top: .2em;
@@ -42,37 +42,37 @@ h2 {
     text-align: center;
     color: rgb(223, 242, 253);
     font-size: 2.5em;
-    font-family: 'Lato' sans-serif;
+    font-family: 'Lato', verdana;
 }
 
 h3 {
     margin-top: 2.5em;
-    font-family: 'Lato' sans-serif;
+    font-family: 'Lato', verdana;
 }
 
 p {
     line-height: 1.5em;
-    font-family: 'Lato' sans-serif;
+    font-family: 'Lato', verdana;
     font-size: .9em;
 }
 
 a {
     text-decoration: none;
     color: black;
-    font-family: 'Lato' sans-serif;
+    font-family: 'Lato' verdana;
 }
 
 /* FORSIDE */
 
 .events {
-    background-color: black;
+    background-color: rgb(157, 157, 156);
     padding: 1em;
     margin: 3.5em 2em 1em 2em;
     border-radius: 50%;
 }
 
 .kontakt {
-    background-color: black;
+    background-color: rgb(157, 157, 156);
     padding: 1em;
     margin: 3.5em 2em;
     border-radius: 50%;
@@ -81,25 +81,22 @@ a {
 /* EVENTS */
 
 article {
-    background-color: black;
-    padding: 1em;
-    border-radius: 1em;
-    margin: 1em;
-    margin-bottom: 3em;
-    font-family: 'Lato', sans-serif;
+    margin: 1.5em 1.5em 3em 1.5em;
+    font-family: 'Lato', verdana;
+
 }
 
 article h2 {
-    color: white;
     font-size: 1em;
     line-height: 1.5em;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato', verdana;
+    color: black;
 }
 
 .box {
-    font-family: 'Lato', sans-serif;
-    color: white;
+    font-family: 'Lato', verdana;
     line-height: 1.5em;
+    font-size: .9em;
 }
 
 article img {
@@ -119,23 +116,31 @@ article img {
     border: none;
     background-color: rgb(157, 157, 156);
     padding: 1em .6em;
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato', verdana;
 }
 
 .menu-item:focus {
-    color: rgb(36, 25, 93);
+    color: rgb(157, 157, 156);
     background-color: rgb(223, 242, 253);
     border: 2px solid rgb(36, 25, 93);
 }
 
 .container {
-    font-family: 'Lato', sans-serif;
+    font-family: 'Lato', verdana;
 }
 
 .postlistviewparent a {
-    font-family: 'Lato', sans-serif;
-    color: white;
+    font-family: 'Lato', verdana;
 }
+
+    hr{
+        color: black;
+                margin-top: 30px;
+                background-color: black;
+                height: 1px;
+                width: 80%;
+                border: 0px;
+    }
 
 /* KONTAKT */
 
